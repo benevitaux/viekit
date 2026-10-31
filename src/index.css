@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --app-bg: #0f172a;
+    --app-card: #1e293b;
+    --app-border: #334155;
+    --app-text: #f8fafc;
+    --app-subtext: #94a3b8;
+
+    /* Accent color variables default to green */
+    --app-accent: #10b981;
+    --app-accent-text: #34d399;
+    --app-accent-hover: #059669;
+    --app-accent-light: rgba(16, 185, 129, 0.15);
+    --app-accent-border: rgba(16, 185, 129, 0.35);
+  }
+
+  html.theme-light {
+    --app-bg: #f8fafc;
+    --app-card: #ffffff;
+    --app-border: #e2e8f0;
+    --app-text: #0f172a;
+    --app-subtext: #64748b;
+  }
+
+  html.theme-dark {
+    --app-bg: #0f172a;
+    --app-card: #1e293b;
+    --app-border: #334155;
+    --app-text: #f8fafc;
+    --app-subtext: #94a3b8;
+  }
+
+  html.theme-black {
+    --app-bg: #000000;
+    --app-card: #0a0a0a;
+    --app-border: #262626;
+    --app-text: #ffffff;
+    --app-subtext: #a3a3a3;
+  }
+
+  /* Dynamic Accent Colors */
+  html.accent-green {
+    --app-accent: #10b981;
+    --app-accent-text: #34d399;
+    --app-accent-hover: #059669;
+    --app-accent-light: rgba(16, 185, 129, 0.15);
+    --app-accent-border: rgba(16, 185, 129, 0.35);
+  }
+
+  html.accent-red {
+    --app-accent: #f43f5e;
+    --app-accent-text: #fb7185;
+    --app-accent-hover: #e11d48;
+    --app-accent-light: rgba(244, 63, 94, 0.15);
+    --app-accent-border: rgba(244, 63, 94, 0.35);
+  }
+
+  html.accent-blue {
+    --app-accent: #0ea5e9;
+    --app-accent-text: #38bdf8;
+    --app-accent-hover: #0284c7;
+    --app-accent-light: rgba(14, 165, 233, 0.15);
+    --app-accent-border: rgba(14, 165, 233, 0.35);
+  }
+
+  html.accent-amber {
+    --app-accent: #f59e0b;
+    --app-accent-text: #fbbf24;
+    --app-accent-hover: #d97706;
+    --app-accent-light: rgba(245, 158, 11, 0.15);
+    --app-accent-border: rgba(245, 158, 11, 0.35);
+  }
+
+  html.accent-cyan {
+    --app-accent: #06b6d4;
+    --app-accent-text: #22d3ee;
+    --app-accent-hover: #0891b2;
+    --app-accent-light: rgba(6, 182, 212, 0.15);
+    --app-accent-border: rgba(6, 182, 212, 0.35);
+  }
+}
+
+body {
+  background-color: var(--app-bg);
+  color: var(--app-text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Red emergency SOS pulsing glow */
+@keyframes sos-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.7), 0 0 35px rgba(239, 68, 68, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(239, 68, 68, 0.95), 0 0 60px rgba(239, 68, 68, 0.6);
+    transform: scale(1.02);
+  }
+}
+
+.sos-pulse {
+  animation: sos-glow 2s infinite ease-in-out;
+}
+
+@keyframes radar-ripple {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.radar-ring {
+  animation: radar-ripple 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+/* Strobe flash animation */
+@keyframes strobe-flash {
+  0%, 49% {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  50%, 100% {
+    background-color: #000000;
+    color: #ffffff;
+  }
+}
+
+.strobe-active {
+  animation: strobe-flash 0.15s infinite;
+}

@@ -1,0 +1,6 @@
+{
+  "name": "VieKit",
+  "description": "VieKit is an offline-ready, multi-language emergency survival, medical, and preparedness kit with UN country emergency directories and rapid response tools.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
