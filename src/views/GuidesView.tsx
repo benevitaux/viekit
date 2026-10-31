@@ -49,7 +49,7 @@ export const GuidesView: React.FC = () => {
       </div>
 
       {/* Filter Chips */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+      <div className="flex flex-wrap items-center gap-2 pb-1">
         {categories.map((c) => (
           <button
             key={c.id}
@@ -76,13 +76,14 @@ export const GuidesView: React.FC = () => {
           <button
             key={guide.id}
             onClick={() => setSelectedGuide(guide)}
-            className="w-full p-4 rounded-3xl border text-left flex items-start justify-between transition-all hover:opacity-90 active:scale-[0.99] shadow-sm"
+            className="w-full p-4 rounded-3xl border text-start flex items-start justify-between transition-all hover:opacity-90 active:scale-[0.99] shadow-sm overflow-hidden"
             style={{
               backgroundColor: 'var(--app-card)',
               borderColor: 'var(--app-border)',
             }}
+            dir={direction}
           >
-            <div className="flex items-start gap-3.5">
+            <div className="flex items-start gap-3.5 flex-1 min-w-0 pr-2">
               <span
                 className={`p-3 rounded-2xl border shrink-0 mt-0.5 ${
                   guide.priority === 'critical'
@@ -111,8 +112,8 @@ export const GuidesView: React.FC = () => {
               </span>
 
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2">
-                  <h3 className="text-sm sm:text-base font-extrabold truncate" style={{ color: 'var(--app-text)' }}>
+                <div className="flex flex-wrap items-center gap-2">
+                  <h3 className="text-sm sm:text-base font-extrabold break-words" style={{ color: 'var(--app-text)' }}>
                     {guide.title}
                   </h3>
                   {guide.priority === 'critical' && (
@@ -122,7 +123,7 @@ export const GuidesView: React.FC = () => {
                   )}
                 </div>
 
-                <p className="text-xs mt-1 line-clamp-2 leading-relaxed" style={{ color: 'var(--app-subtext)' }}>
+                <p className="text-xs mt-1 break-words leading-relaxed" style={{ color: 'var(--app-subtext)' }}>
                   {guide.summary}
                 </p>
 
@@ -146,12 +147,13 @@ export const GuidesView: React.FC = () => {
       {selectedGuide && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-md overflow-y-auto">
           <div
-            className="w-full max-w-2xl rounded-3xl border shadow-2xl p-5 sm:p-7 my-auto max-h-[90vh] overflow-y-auto"
+            className="w-full max-w-2xl rounded-3xl border shadow-2xl p-5 sm:p-7 my-auto max-h-[90vh] overflow-y-auto text-start"
             style={{
               backgroundColor: 'var(--app-card)',
               borderColor: 'var(--app-border)',
               color: 'var(--app-text)',
             }}
+            dir={direction}
           >
             {/* Header */}
             <div className="flex items-start justify-between pb-4 border-b" style={{ borderColor: 'var(--app-border)' }}>

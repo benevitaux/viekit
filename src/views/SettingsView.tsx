@@ -29,6 +29,7 @@ export const SettingsView: React.FC = () => {
     accent,
     setAccent,
     t,
+    direction,
   } = useApp();
 
   const [countryFilter, setCountryFilter] = useState('');
@@ -76,66 +77,6 @@ export const SettingsView: React.FC = () => {
         <p className="text-xs opacity-75 mt-0.5" style={{ color: 'var(--app-subtext)' }}>
           {t.settingsSubtitle}
         </p>
-      </div>
-
-      {/* ========================================================= */}
-      {/* Section 1: Single-File HTML Export (Top Priority Feature) */}
-      {/* ========================================================= */}
-      <div
-        className="p-5 rounded-3xl border shadow-lg relative overflow-hidden"
-        style={{
-          backgroundColor: 'var(--app-card)',
-          borderColor: 'var(--app-border)',
-        }}
-      >
-        <div className="flex items-center gap-2.5 mb-2">
-          <span
-            className="p-2.5 rounded-2xl border"
-            style={{
-              backgroundColor: 'var(--app-accent-light)',
-              borderColor: 'var(--app-accent-border)',
-              color: 'var(--app-accent-text)',
-            }}
-          >
-            <HardDriveDownload className="w-5 h-5" />
-          </span>
-          <div>
-            <h3 className="text-base font-extrabold" style={{ color: 'var(--app-text)' }}>
-              {t.sectionExport}
-            </h3>
-            <p className="text-xs opacity-75" style={{ color: 'var(--app-subtext)' }}>
-              {t.exportSectionSub}
-            </p>
-          </div>
-        </div>
-
-        <p className="text-xs opacity-80 my-3 leading-relaxed" style={{ color: 'var(--app-subtext)' }}>
-          {t.exportSingleHtmlDesc}
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-2.5">
-          <button
-            onClick={handleDownloadSingleHtml}
-            className="flex-1 py-3 px-4 rounded-2xl text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 active:scale-95 transition-all shadow-lg"
-            style={{ backgroundColor: 'var(--app-accent)' }}
-          >
-            {downloadSuccess ? <Check className="w-4 h-4 text-white" /> : <Download className="w-4 h-4" />}
-            <span>{downloadSuccess ? 'Downloaded VieKit.html!' : t.exportSingleHtmlBtn}</span>
-          </button>
-
-          <button
-            onClick={handleShareApp}
-            className="py-3 px-4 rounded-2xl border font-bold text-xs flex items-center justify-center gap-2 hover:opacity-100 opacity-80 active:scale-95 transition-all"
-            style={{ backgroundColor: 'var(--app-bg)', borderColor: 'var(--app-border)', color: 'var(--app-text)' }}
-          >
-            <Share2 className="w-4 h-4" style={{ color: 'var(--app-accent-text)' }} />
-            <span>{t.shareWithFamily}</span>
-          </button>
-        </div>
-
-        <div className="mt-3 text-center text-[11px] font-mono font-bold opacity-60" style={{ color: 'var(--app-subtext)' }}>
-          Version 1.0.0
-        </div>
       </div>
 
       {/* ========================================================= */}
@@ -366,6 +307,67 @@ export const SettingsView: React.FC = () => {
               </button>
             );
           })}
+        </div>
+      </div>
+
+      {/* ========================================================= */}
+      {/* Section 1: Single-File HTML Export                        */}
+      {/* ========================================================= */}
+      <div
+        className="p-5 rounded-3xl border shadow-lg relative overflow-hidden"
+        style={{
+          backgroundColor: 'var(--app-card)',
+          borderColor: 'var(--app-border)',
+        }}
+        dir={direction}
+      >
+        <div className="flex items-center gap-2.5 mb-2">
+          <span
+            className="p-2.5 rounded-2xl border"
+            style={{
+              backgroundColor: 'var(--app-accent-light)',
+              borderColor: 'var(--app-accent-border)',
+              color: 'var(--app-accent-text)',
+            }}
+          >
+            <HardDriveDownload className="w-5 h-5" />
+          </span>
+          <div>
+            <h3 className="text-base font-extrabold" style={{ color: 'var(--app-text)' }}>
+              {t.sectionExport}
+            </h3>
+            <p className="text-xs opacity-75" style={{ color: 'var(--app-subtext)' }}>
+              {t.exportSectionSub}
+            </p>
+          </div>
+        </div>
+
+        <p className="text-xs opacity-80 my-3 leading-relaxed" style={{ color: 'var(--app-subtext)' }}>
+          {t.exportSingleHtmlDesc}
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-2.5">
+          <button
+            onClick={handleDownloadSingleHtml}
+            className="flex-1 py-3 px-4 rounded-2xl text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 active:scale-95 transition-all shadow-lg"
+            style={{ backgroundColor: 'var(--app-accent)' }}
+          >
+            {downloadSuccess ? <Check className="w-4 h-4 text-white" /> : <Download className="w-4 h-4" />}
+            <span>{downloadSuccess ? 'Downloaded VieKit.html!' : t.exportSingleHtmlBtn}</span>
+          </button>
+
+          <button
+            onClick={handleShareApp}
+            className="py-3 px-4 rounded-2xl border font-bold text-xs flex items-center justify-center gap-2 hover:opacity-100 opacity-80 active:scale-95 transition-all"
+            style={{ backgroundColor: 'var(--app-bg)', borderColor: 'var(--app-border)', color: 'var(--app-text)' }}
+          >
+            <Share2 className="w-4 h-4" style={{ color: 'var(--app-accent-text)' }} />
+            <span>{t.shareWithFamily}</span>
+          </button>
+        </div>
+
+        <div className="mt-3 text-center text-[11px] font-mono font-bold opacity-60" style={{ color: 'var(--app-subtext)' }}>
+          Version 1.0.0
         </div>
       </div>
     </div>

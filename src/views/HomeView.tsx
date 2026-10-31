@@ -172,15 +172,16 @@ export const HomeView: React.FC = () => {
               setActiveTab('tools');
               setActiveTool({ category: 'survival', id: 'emergency-numbers' });
             }}
-            className="p-3.5 rounded-2xl border text-left flex flex-col justify-between transition-all hover:opacity-90 active:scale-95"
+            className="p-3.5 rounded-2xl border text-start flex flex-col justify-between transition-all hover:opacity-90 active:scale-95"
             style={{ backgroundColor: 'var(--app-card)', borderColor: 'var(--app-border)' }}
+            dir={direction}
           >
             <span className="p-2 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 w-fit">
               <PhoneCall className="w-4 h-4" />
             </span>
             <div className="mt-3">
-              <div className="text-xs font-bold" style={{ color: 'var(--app-text)' }}>{t.emergencyNumbersTitle}</div>
-              <div className="text-[11px] opacity-65 truncate mt-0.5" style={{ color: 'var(--app-subtext)' }}>
+              <div className="text-xs font-bold break-words" style={{ color: 'var(--app-text)' }}>{t.emergencyNumbersTitle}</div>
+              <div className="text-[11px] opacity-65 break-words mt-0.5" style={{ color: 'var(--app-subtext)' }}>
                 {country.name}: {country.emergency.general}
               </div>
             </div>
@@ -192,8 +193,9 @@ export const HomeView: React.FC = () => {
               setActiveTab('tools');
               setActiveTool({ category: 'survival', id: 'whistle' });
             }}
-            className="p-3.5 rounded-2xl border text-left flex flex-col justify-between transition-all hover:opacity-90 active:scale-95"
+            className="p-3.5 rounded-2xl border text-start flex flex-col justify-between transition-all hover:opacity-90 active:scale-95"
             style={{ backgroundColor: 'var(--app-card)', borderColor: 'var(--app-border)' }}
+            dir={direction}
           >
             <span
               className="p-2 rounded-xl border w-fit"
@@ -206,8 +208,8 @@ export const HomeView: React.FC = () => {
               <Volume2 className="w-4 h-4" />
             </span>
             <div className="mt-3">
-              <div className="text-xs font-bold" style={{ color: 'var(--app-text)' }}>{t.whistleTitle}</div>
-              <div className="text-[11px] opacity-65 truncate mt-0.5" style={{ color: 'var(--app-subtext)' }}>
+              <div className="text-xs font-bold break-words" style={{ color: 'var(--app-text)' }}>{t.whistleTitle}</div>
+              <div className="text-[11px] opacity-65 break-words mt-0.5" style={{ color: 'var(--app-subtext)' }}>
                 Acoustic pea whistle & alarm
               </div>
             </div>
@@ -219,15 +221,16 @@ export const HomeView: React.FC = () => {
               setActiveTab('tools');
               setActiveTool({ category: 'survival', id: 'flashlight' });
             }}
-            className="p-3.5 rounded-2xl border text-left flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 active:scale-95"
+            className="p-3.5 rounded-2xl border text-start flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 active:scale-95"
             style={{ backgroundColor: 'var(--app-card)', borderColor: 'var(--app-border)' }}
+            dir={direction}
           >
             <span className="p-2 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 w-fit">
               <Zap className="w-4 h-4" />
             </span>
             <div className="mt-3">
-              <div className="text-xs font-bold" style={{ color: 'var(--app-text)' }}>{t.flashlightTitle}</div>
-              <div className="text-[11px] opacity-65 truncate mt-0.5" style={{ color: 'var(--app-subtext)' }}>
+              <div className="text-xs font-bold break-words" style={{ color: 'var(--app-text)' }}>{t.flashlightTitle}</div>
+              <div className="text-[11px] opacity-65 break-words mt-0.5" style={{ color: 'var(--app-subtext)' }}>
                 Hardware LED & night vision
               </div>
             </div>
@@ -239,15 +242,16 @@ export const HomeView: React.FC = () => {
               setActiveTab('tools');
               setActiveTool({ category: 'medical', id: 'cpr' });
             }}
-            className="p-3.5 rounded-2xl border text-left flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 active:scale-95"
+            className="p-3.5 rounded-2xl border text-start flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 active:scale-95"
             style={{ backgroundColor: 'var(--app-card)', borderColor: 'var(--app-border)' }}
+            dir={direction}
           >
             <span className="p-2 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 w-fit">
               <Heart className="w-4 h-4" />
             </span>
             <div className="mt-3">
-              <div className="text-xs font-bold" style={{ color: 'var(--app-text)' }}>{t.cprTitle}</div>
-              <div className="text-[11px] opacity-65 truncate mt-0.5" style={{ color: 'var(--app-subtext)' }}>
+              <div className="text-xs font-bold break-words" style={{ color: 'var(--app-text)' }}>{t.cprTitle}</div>
+              <div className="text-[11px] opacity-65 break-words mt-0.5" style={{ color: 'var(--app-subtext)' }}>
                 110 BPM metronome & counter
               </div>
             </div>
@@ -259,15 +263,16 @@ export const HomeView: React.FC = () => {
               setActiveTab('tools');
               setActiveTool({ category: 'mental', id: 'grounding-54321' });
             }}
-            className="p-3.5 rounded-2xl border text-left flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 active:scale-95"
+            className="p-3.5 rounded-2xl border text-start flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 active:scale-95"
             style={{ backgroundColor: 'var(--app-card)', borderColor: 'var(--app-border)' }}
+            dir={direction}
           >
             <span className="p-2 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 w-fit">
               <ShieldCheck className="w-4 h-4" />
             </span>
             <div className="mt-3">
-              <div className="text-xs font-bold" style={{ color: 'var(--app-text)' }}>{t.groundingTitle}</div>
-              <div className="text-[11px] opacity-65 truncate mt-0.5" style={{ color: 'var(--app-subtext)' }}>
+              <div className="text-xs font-bold break-words" style={{ color: 'var(--app-text)' }}>{t.groundingTitle}</div>
+              <div className="text-[11px] opacity-65 break-words mt-0.5" style={{ color: 'var(--app-subtext)' }}>
                 Shock & panic regulation
               </div>
             </div>
@@ -279,15 +284,16 @@ export const HomeView: React.FC = () => {
               setActiveTab('tools');
               setActiveTool({ category: 'survival', id: 'water-ors' });
             }}
-            className="p-3.5 rounded-2xl border text-left flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 active:scale-95"
+            className="p-3.5 rounded-2xl border text-start flex flex-col justify-between transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 active:scale-95"
             style={{ backgroundColor: 'var(--app-card)', borderColor: 'var(--app-border)' }}
+            dir={direction}
           >
             <span className="p-2 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 w-fit">
               <Droplets className="w-4 h-4" />
             </span>
             <div className="mt-3">
-              <div className="text-xs font-bold" style={{ color: 'var(--app-text)' }}>{t.waterOrsTitle}</div>
-              <div className="text-[11px] opacity-65 truncate mt-0.5" style={{ color: 'var(--app-subtext)' }}>
+              <div className="text-xs font-bold break-words" style={{ color: 'var(--app-text)' }}>{t.waterOrsTitle}</div>
+              <div className="text-[11px] opacity-65 break-words mt-0.5" style={{ color: 'var(--app-subtext)' }}>
                 WHO rehydration & bleaching
               </div>
             </div>
@@ -316,18 +322,19 @@ export const HomeView: React.FC = () => {
             <button
               key={guide.id}
               onClick={() => setActiveTab('guides')}
-              className="w-full p-4 rounded-2xl border text-left flex items-center justify-between transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 active:scale-[0.99]"
+              className="w-full p-4 rounded-2xl border text-start flex items-center justify-between transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 active:scale-[0.99]"
               style={{ backgroundColor: 'var(--app-card)', borderColor: 'var(--app-border)' }}
+              dir={direction}
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 min-w-0 flex-1 pr-2">
                 <span className="p-2.5 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 shrink-0">
                   <BookOpen className="w-4 h-4" />
                 </span>
-                <div>
-                  <h4 className="text-xs sm:text-sm font-bold" style={{ color: 'var(--app-text)' }}>
+                <div className="min-w-0 flex-1">
+                  <h4 className="text-xs sm:text-sm font-bold break-words" style={{ color: 'var(--app-text)' }}>
                     {guide.title}
                   </h4>
-                  <p className="text-[11px] opacity-70 line-clamp-1 mt-0.5" style={{ color: 'var(--app-subtext)' }}>
+                  <p className="text-[11px] opacity-70 break-words mt-0.5" style={{ color: 'var(--app-subtext)' }}>
                     {guide.summary}
                   </p>
                 </div>

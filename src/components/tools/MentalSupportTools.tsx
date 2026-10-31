@@ -142,51 +142,54 @@ export const MentalSupportTools: React.FC<Props> = ({ toolId }) => {
   // Tool 1: 5-4-3-2-1 Sensory Grounding
   // -------------------------------------------------------------
   if (toolId === 'grounding-54321') {
+    const { direction, t } = useApp();
+    const ChevronIcon = direction === 'rtl' ? ChevronLeft : ChevronRight;
+
     const steps = [
       {
         count: 5,
-        title: '5 Things You Can SEE',
+        title: t.groundingStep1Title,
         icon: Eye,
         color: 'text-blue-400',
         bg: 'bg-blue-500/10 border-blue-500/30',
-        desc: 'Look around you right now. Notice 5 distinct visual objects, patterns, or colors.',
-        examples: 'A light switch, floor grain, shoes, clouds, shadow on the wall, color of a jacket.',
+        desc: t.groundingStep1Desc,
+        examples: t.groundingStep1Examples,
       },
       {
         count: 4,
-        title: '4 Things You Can TOUCH / FEEL',
+        title: t.groundingStep2Title,
         icon: Hand,
         color: 'text-emerald-400',
         bg: 'bg-emerald-500/10 border-emerald-500/30',
-        desc: 'Feel the tactile pressure of your physical body grounded in this space.',
-        examples: 'Feet firm on the ground, fabric of trousers, cool phone in hand, cool breeze on skin.',
+        desc: t.groundingStep2Desc,
+        examples: t.groundingStep2Examples,
       },
       {
         count: 3,
-        title: '3 Things You Can HEAR',
+        title: t.groundingStep3Title,
         icon: Volume2,
         color: 'text-amber-400',
         bg: 'bg-amber-500/10 border-amber-500/30',
-        desc: 'Close your eyes for 3 seconds. Tune your hearing to near and distant sounds.',
-        examples: 'Your own breath, distant traffic, hum of an appliance, birds, footsteps.',
+        desc: t.groundingStep3Desc,
+        examples: t.groundingStep3Examples,
       },
       {
         count: 2,
-        title: '2 Things You Can SMELL',
+        title: t.groundingStep4Title,
         icon: Wind,
         color: 'text-indigo-400',
         bg: 'bg-indigo-500/10 border-indigo-500/30',
-        desc: 'Inhale gently through your nose. Notice scents in the environment.',
-        examples: 'Rain/earth, coffee, clothing soap, fresh air, hand sanitizer, paper.',
+        desc: t.groundingStep4Desc,
+        examples: t.groundingStep4Examples,
       },
       {
         count: 1,
-        title: '1 Thing You Can TASTE (or Grateful For)',
+        title: t.groundingStep5Title,
         icon: Smile,
         color: 'text-rose-400',
         bg: 'bg-rose-500/10 border-rose-500/30',
-        desc: 'Notice a taste in your mouth, or name 1 simple thing you are grateful for right now.',
-        examples: 'A sip of water, clean air in lungs, safety in this breath, being alive right now.',
+        desc: t.groundingStep5Desc,
+        examples: t.groundingStep5Examples,
       },
     ];
 
@@ -194,23 +197,23 @@ export const MentalSupportTools: React.FC<Props> = ({ toolId }) => {
     const Icon = currentStep.icon;
 
     return (
-      <div className="space-y-4">
+      <div className="space-y-4" dir={direction}>
         <div
-          className="p-6 rounded-3xl border shadow-lg text-center"
+          className="p-6 rounded-3xl border shadow-lg text-start"
           style={{ backgroundColor: 'var(--app-card)', borderColor: 'var(--app-border)' }}
         >
           <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400">
-            Trauma & Panic Grounding
+            {t.groundingSubtitle}
           </span>
-          <h3 className="text-xl font-black mt-0.5" style={{ color: 'var(--app-text)' }}>
-            5-4-3-2-1 Sensory Grounding
+          <h3 className="text-xl font-black mt-0.5 break-words" style={{ color: 'var(--app-text)' }}>
+            {t.groundingTitleLong}
           </h3>
-          <p className="text-xs opacity-75 mt-1" style={{ color: 'var(--app-subtext)' }}>
-            Engages prefrontal cortex to pull attention away from limbic panic and acute shock.
+          <p className="text-xs opacity-75 mt-1 break-words leading-relaxed" style={{ color: 'var(--app-subtext)' }}>
+            {t.groundingDesc}
           </p>
 
           {/* Current Step Card */}
-          <div className={`my-6 p-6 rounded-3xl border ${currentStep.bg} transition-all`}>
+          <div className={`my-6 p-6 rounded-3xl border ${currentStep.bg} transition-all text-center`}>
             <div className="flex justify-center mb-3">
               <span className="p-3 rounded-2xl bg-black/30 border border-white/10">
                 <Icon className={`w-8 h-8 ${currentStep.color}`} />
@@ -221,17 +224,16 @@ export const MentalSupportTools: React.FC<Props> = ({ toolId }) => {
               {currentStep.count}
             </div>
 
-            <h4 className="text-lg font-black text-white">
+            <h4 className="text-lg font-black text-white break-words">
               {currentStep.title}
             </h4>
 
-            <p className="text-xs text-slate-200 mt-2 font-medium">
+            <p className="text-xs text-slate-200 mt-2 font-medium break-words leading-relaxed">
               {currentStep.desc}
             </p>
 
-            <div className="mt-4 p-3 rounded-2xl bg-black/40 border border-white/10 text-[11px] text-slate-300">
-              <span className="font-bold opacity-80">Ideas: </span>
-              {currentStep.examples}
+            <div className="mt-4 p-3 rounded-2xl bg-black/40 border border-white/10 text-[11px] text-slate-300 text-start break-words leading-relaxed">
+              <span className="font-bold opacity-80">{t.groundingIdeasLabel}</span> {currentStep.examples}
             </div>
           </div>
 
@@ -256,7 +258,7 @@ export const MentalSupportTools: React.FC<Props> = ({ toolId }) => {
               }}
               className="py-3 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-2 active:scale-95 transition-all shadow"
             >
-              <span>{groundingStep === steps.length - 1 ? 'Complete & Restart' : 'Next Sensory Step'}</span>
+              <span>{groundingStep === steps.length - 1 ? t.groundingComplete : t.groundingNextStep}</span>
               <ChevronIcon className="w-4 h-4" />
             </button>
 
@@ -277,29 +279,30 @@ export const MentalSupportTools: React.FC<Props> = ({ toolId }) => {
   // Tool 2: Calm Box Breathing (4-4-4-4)
   // -------------------------------------------------------------
   if (toolId === 'calm-breathing') {
+    const { direction, t } = useApp();
     const phaseNames = {
-      inhale: { label: 'Breathe In...', sub: 'Deeply through nose', scale: 'scale-125 bg-blue-500/25 border-blue-400' },
-      hold1: { label: 'Hold Breath...', sub: 'Lungs full, body still', scale: 'scale-125 bg-amber-500/25 border-amber-400' },
-      exhale: { label: 'Breathe Out...', sub: 'Slowly through mouth', scale: 'scale-90 bg-emerald-500/25 border-emerald-400' },
-      hold2: { label: 'Hold Breath...', sub: 'Lungs empty, resting', scale: 'scale-90 bg-purple-500/25 border-purple-400' },
+      inhale: { label: t.breathIn, sub: t.deepThroughNose, scale: 'scale-125 bg-blue-500/25 border-blue-400' },
+      hold1: { label: t.holdBreath, sub: t.lungsFull, scale: 'scale-125 bg-amber-500/25 border-amber-400' },
+      exhale: { label: t.breatheOut, sub: t.slowThroughMouth, scale: 'scale-90 bg-emerald-500/25 border-emerald-400' },
+      hold2: { label: t.holdBreath, sub: t.lungsEmpty, scale: 'scale-90 bg-purple-500/25 border-purple-400' },
     };
 
     const currentPhaseData = phaseNames[boxPhase];
 
     return (
-      <div className="space-y-4">
+      <div className="space-y-4" dir={direction}>
         <div
-          className="p-6 rounded-3xl border shadow-lg text-center"
+          className="p-6 rounded-3xl border shadow-lg text-start"
           style={{ backgroundColor: 'var(--app-card)', borderColor: 'var(--app-border)' }}
         >
           <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400">
-            Navy SEAL Stress Reduction
+            {t.calmBreathingSubtitle}
           </span>
-          <h3 className="text-xl font-black mt-0.5" style={{ color: 'var(--app-text)' }}>
-            Calm Box Breathing (4-4-4-4)
+          <h3 className="text-xl font-black mt-0.5 break-words" style={{ color: 'var(--app-text)' }}>
+            {t.calmBreathingTitleLong}
           </h3>
-          <p className="text-xs opacity-75 mt-1" style={{ color: 'var(--app-subtext)' }}>
-            Inhale 4s • Hold 4s • Exhale 4s • Hold 4s. Activates parasympathetic vagus nerve.
+          <p className="text-xs opacity-75 mt-1 break-words leading-relaxed" style={{ color: 'var(--app-subtext)' }}>
+            {t.calmBreathingDesc}
           </p>
 
           {/* Animated Circle */}
@@ -312,30 +315,32 @@ export const MentalSupportTools: React.FC<Props> = ({ toolId }) => {
               <span className="text-3xl font-black font-mono" style={{ color: 'var(--app-text)' }}>
                 {isBoxRunning ? boxCountdown : '4'}
               </span>
-              <span className="text-xs font-black uppercase mt-1 text-emerald-400">
-                {isBoxRunning ? currentPhaseData.label : 'Ready'}
+              <span className="text-xs font-black uppercase mt-1 text-emerald-400 break-words px-2 text-center">
+                {isBoxRunning ? currentPhaseData.label : t.ready}
               </span>
-              <span className="text-[10px] opacity-70">
-                {isBoxRunning ? currentPhaseData.sub : 'Tap Start Below'}
+              <span className="text-[10px] opacity-70 break-words px-2 text-center mt-0.5">
+                {isBoxRunning ? currentPhaseData.sub : t.tapStartBelow}
               </span>
             </div>
           </div>
 
-          <button
-            onClick={() => {
-              if (!isBoxRunning) {
-                soundEngine.playCalmChime(528, 1);
-              }
-              setIsBoxRunning(!isBoxRunning);
-            }}
-            className={`py-3.5 px-8 rounded-2xl font-black text-xs uppercase tracking-wider transition-all active:scale-95 shadow-lg ${
-              isBoxRunning
-                ? 'bg-amber-600 hover:bg-amber-500 text-white'
-                : 'bg-emerald-600 hover:bg-emerald-500 text-white'
-            }`}
-          >
-            {isBoxRunning ? 'Pause Breathing' : 'Begin Box Breathing'}
-          </button>
+          <div className="flex justify-center">
+            <button
+              onClick={() => {
+                if (!isBoxRunning) {
+                  soundEngine.playCalmChime(528, 1);
+                }
+                setIsBoxRunning(!isBoxRunning);
+              }}
+              className={`py-3.5 px-8 rounded-2xl font-black text-xs uppercase tracking-wider transition-all active:scale-95 shadow-lg ${
+                isBoxRunning
+                  ? 'bg-amber-600 hover:bg-amber-500 text-white'
+                  : 'bg-emerald-600 hover:bg-emerald-500 text-white'
+              }`}
+            >
+              {isBoxRunning ? t.pauseBreathing : t.beginBoxBreathing}
+            </button>
+          </div>
         </div>
       </div>
     );
